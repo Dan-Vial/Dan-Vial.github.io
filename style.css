@@ -1,0 +1,222 @@
+@charset "utf-8";
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24 juin 2021, 16:40:45
+    Author     : aurum
+*/
+
+/* body */
+body {
+    margin: 0;
+    font-family: sans;
+    background-color: whitesmoke;
+}
+
+/* ###  grid refoctory  ################################ */
+body,
+#header,
+main,
+section,
+footer
+{ 
+    display: grid;
+    /*max-width: 1200px;*/
+    width: 100%;
+    margin: auto;
+}
+
+/* ###  header ################################ */
+#header {
+    position: fixed;
+    top: 0;
+    grid-template-columns: auto auto 1fr;
+    gap: 1em;
+    justify-items: center;
+    align-items: center;
+    background-image: linear-gradient(blue, white 70%, red);
+    margin: auto;
+    padding: 0.5em 0;
+    z-index: 2;
+}
+
+#header-img {
+    margin-left: 1em;
+    max-height: 3.5em;
+}
+
+#header a {
+    text-decoration: none;
+}
+
+#title {
+    font-family: 'Notable', sans-serif;
+    color: #006600;
+}
+
+/* ### nav ################################ */
+#navbar {
+    justify-self: end;
+    margin-right: 1em;
+}
+
+#nav-input[type=checkbox] {
+  display: none;
+}
+
+#button-check:after {
+  display: none;
+  content: ' \2261';
+  font-size: 4em;
+  border: 3px solid yellow;
+  border-radius: 10px;
+  background-color: #006600;
+  color: white;
+  font-family: Syncopate;
+}
+
+#nav-input[type=checkbox]:checked ~ #button-check:after {
+  content: ' \2262';
+  color: red;
+}
+
+#nav-ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-link {
+    display: inline-block;
+    text-align: center;
+    width: 6em;
+    background-color: #006600;
+    color: white;
+    text-decoration: none;
+    padding: 0.7em 0;
+    margin: 0 0.1em;
+    border: 2px yellow solid;
+    border-radius: 50% 10%;
+}
+
+.nav-link:hover {
+    background-color: yellow;
+    border-color: green;
+    color: black;
+    transition: background-color 0.7s, border-color 0.7s, color 0.7s;
+}
+
+/* ### welcome  ################################  */
+#welcome-section {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    background-color: indigo;
+    background-image: url('sources/images/bois_d.png');
+    background-blend-mode: hue;
+    height: 100vh;
+    color: white;
+    animation: welcome-section 5s infinite alternate;
+}
+
+#welcome-section h1 {
+    font-family: 'Syncopate', sans-serif;
+}
+
+#welcome-section-img {
+    position: relative;
+    max-height: 128px;
+    animation: welcome-section-img 3s;
+}
+
+@keyframes welcome-section {
+    0% { color: white;}
+    25% { color: red;}
+    50% { color: green;}
+    75% { color: blue;}
+    100% { color: gray;}
+}
+
+@keyframes welcome-section-img {
+    from { 
+        max-height: 32px;
+        opacity: 0;
+    }
+    to { 
+        max-height: 128px;
+        opacity: 1;
+    }
+}
+
+/* ### projects  ################################  */
+#projects {
+    display: grid;
+    justify-content: center;
+    gap: 2em;
+    justify-items: center;
+    background-image: url('sources/images/bois_d.png');
+    padding: 5.5em 0;
+}
+
+/* ### footer/profile ########*/
+#profile {
+    grid-template-columns: repeat(auto-fit, 200px); 
+    justify-content: center;
+    gap: 2em;
+    background-color: black;
+    padding: 7.5em 0;
+}
+
+#profile a {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 1em;
+    border: white solid 5px;
+    text-align: center;
+}
+
+#profile a:hover,
+.project-tile:hover
+{
+    opacity: 0.5;
+}
+
+.fab,
+.fas
+{
+    font-size: 2em;
+}
+
+/* ### media ########*/
+@media screen and (max-width: 800px) {
+    #nav-input[type=checkbox]:checked ~ #nav-ul {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background-image: url('sources/images/bois_d.png');
+        padding: 0.5em 0;
+        top: 5.5em;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    #nav-ul {
+        display: none;
+    }
+    #button-check:after {
+        display: block;
+        position: fixed;
+        top: 5px;
+        right: 5px;
+    }
+
+    #projects h1 { 
+        grid-column: inherit;
+    }
+}
