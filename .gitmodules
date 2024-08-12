@@ -1,0 +1,3 @@
+[submodule "booki"]
+	path = booki
+	url = https://github.com/Dan-Vial/booki.git
